@@ -456,10 +456,15 @@ public class Client extends JFrame {
 		scrollbar.addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentMoved(ComponentEvent e) {
+				
 			}
 		});
 		scrollbar.setBounds(720, 0, 17, 980);
 		contentPane.add(scrollbar);
+		
+		JLabel lblNewLabel_1 = new JLabel("Catégorie :");
+		lblNewLabel_1.setBounds(73, 469, 64, 14);
+		contentPane.add(lblNewLabel_1);
 	}
 }
 
