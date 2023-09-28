@@ -39,8 +39,6 @@ public class Adhérents {
 		this.lateralite = lateralite;
 	}
 
-	
-
 
 
 	public String getNom() {

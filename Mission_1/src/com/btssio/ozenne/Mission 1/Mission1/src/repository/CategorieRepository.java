@@ -14,7 +14,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import Modele.Categorie;
 
 
 public class CategorieRepository {
@@ -45,15 +44,15 @@ public class CategorieRepository {
 		  
 		return lesCategories;
 	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 		  
-	    
 
-	    
-		
-		
-		
-		
+
 		
 		
 		

@@ -1,4 +1,4 @@
-package repository;
+package com.btssio.ozenne;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,24 +14,38 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import Modele.Client;
-import Modele.Client_Niveau2;
-import Modele.Client_Niveau3;
+import com.btssio.ozenne.Client;
+import com.btssio.ozenne.Client_Niveau2;
+import com.btssio.ozenne.Client_Niveau3;
 
-public class ClientRepository {
+public class Club {
+
+    public static void main(String[] args) {
+        try {
+            String filename = "C:\\Utilisateurs\\User\\tests\\Téléchargement\\GestionAdherents\\documentation\\club.xml";
+            List<Client> clients = getTousLesClients(filename);
+            
+            // Afficher les informations des clients
+            for (Client client : clients) {
+                System.out.println(client.toString());
+            }
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Reste du code (la méthode getTousLesClients reste inchangée)
+    // ...
+
 	
 	
+	static public List<Client> getTousLesClients(String filename) throws ParserConfigurationException, SAXException, IOException{
 	
-	
-	
-	
-	static public List<Clients> getTousLesClients(String filename) throws ParserConfigurationException, SAXException, IOException{
-	
-		List<Clients> lesClients = new ArrayList<Clients>();		
+		List<Client> lesClients = new ArrayList<Client>();		
 		
 			  DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		        DocumentBuilder builder = factory.newDocumentBuilder();
-		        Document document = builder.parse(new File("C:\\tests\\forma2\\Facturation\\utilisateur.xml"));
+		        Document document = builder.parse(new File("C:\\Utilisateurs\\User\\tests\\Téléchargement\\GestionAdherents\\documentation \\club.xml"));
 		      
 		        NodeList nodeList = document.getDocumentElement().getChildNodes();
 		        for (int i = 0; i < nodeList.getLength(); i++) {
@@ -55,17 +69,19 @@ public class ClientRepository {
 		                switch (structure) {
 		                
 		                case 1 : lesClients.add(new Clients(id,nom,mail,adresse,nom_structure));break;
-		                case 2 : lesClients.add(new Client_Niveau2(id,nom,mail,adresse,nom_structure));break;
-		                case 3 : lesClients.add(new Client_Niveau3(id,nom,mail,adresse,nom_structure));break;
+		                //case 2 : lesClients.add(new Client_Niveau2(id,nom,mail,adresse,nom_structure));break;
+		                //case 3 : lesClients.add(new Client_Niveau3(id,nom,mail,adresse,nom_structure));break;
 		                default : lesClients.add(new Clients(id,nom,mail,adresse,nom_structure));break;
 		            }
 		        }
 		        }
-		    //    for (Client empl: lesClients)
-		   //         System.out.println(empl.toString());
+		        for (Client empl: lesClients)
+		       System.out.println(empl.toString());
 		  
 		  return lesClients;
 	}
+	
+
 }
 		  
 	    
@@ -86,4 +102,3 @@ public class ClientRepository {
 		
 		
 		
-
