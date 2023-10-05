@@ -1,0 +1,17 @@
+ JButton btnVoirAdherents = new JButton("Voir Adhérents");
+	        btnVoirAdherents.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                afficherAdherents();
+	            }
+	        });
+	        btnVoirAdherents.setBounds(500, 536, 140, 23);
+	        contentPane.add(btnVoirAdherents)
+private void afficherAdherents() {
+        // Afficher les adhérents
+       afficherAdherents();
+	}
+public static void afficherAdherents() {
+        System.out.println("Adhérents enregistrés :");
+        for (Adherent adherent : listeAdherents) {
+            System.out.println("Nom: " + adherent.getNom() + ", Prénom: " + adherent.getPrenom());
+        }
