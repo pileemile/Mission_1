@@ -15,3 +15,4 @@ public static void afficherAdherents() {
         for (Adherent adherent : listeAdherents) {
             System.out.println("Nom: " + adherent.getNom() + ", Prénom: " + adherent.getPrenom());
         }
+  private static List<Adherent> listeAdherents = new ArrayList<>();
