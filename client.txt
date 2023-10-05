@@ -26,6 +26,9 @@ import java.awt.event.ComponentEvent;
 import java.awt.ScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Scrollbar;
 
@@ -47,7 +50,8 @@ public class Client extends JFrame {
 	private JTextField text_tel_2;
 	private JTextField text_courriel;
 	private JTextField text_nom_prenom_responsable;
-
+	
+	ArrayList<String> valeurs = new ArrayList<>();
 	/**
 	 * Launch the application.
 	 */
@@ -65,7 +69,18 @@ public class Client extends JFrame {
 		
 
 	}
-
+	
+	private void afficherAdherents() {
+        // Afficher les adhérents
+       afficherAdherents1();
+	}
+	
+	public void afficherAdherents1() {
+        System.out.println("Adhérents enregistrés :");
+        for (String adherent : valeurs) {
+            System.out.println("Nom: " + adherent);
+        }
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -118,17 +133,17 @@ public class Client extends JFrame {
 		contentPane.add(text_prenom);
 		text_prenom.setColumns(10);
 		
-		JLabel lbl_date_naiss = new JLabel("Naissance :");
-		lbl_date_naiss.setBounds(73, 169, 74, 14);
+		JLabel lbl_date_naiss = new JLabel("Date de naissance :");
+		lbl_date_naiss.setBounds(73, 169, 99, 14);
 		contentPane.add(lbl_date_naiss);
 		
 		text_date_naiss = new JTextField();
-		text_date_naiss.setBounds(153, 166, 86, 20);
+		text_date_naiss.setBounds(182, 166, 86, 20);
 		contentPane.add(text_date_naiss);
 		text_date_naiss.setColumns(10);
 		
 		JLabel lbl_pays_ville_naiss = new JLabel("Pays et ville de naissance :");
-		lbl_pays_ville_naiss.setBounds(253, 169, 163, 14);
+		lbl_pays_ville_naiss.setBounds(278, 169, 138, 14);
 		contentPane.add(lbl_pays_ville_naiss);
 		
 		text_pays_ville_naiss = new JTextField();
@@ -236,13 +251,14 @@ public class Client extends JFrame {
 		lbl_informations_personnelles.setBounds(73, 124, 166, 14);
 		contentPane.add(lbl_informations_personnelles);
 		
-		JLabel lbl_info = new JLabel("Merci de noter ces infos lle plus lisiblement possible.");
-		lbl_info.setBounds(346, 124, 331, 14);
-		contentPane.add(lbl_info);
+		JLabel lblNewLabel_1 = new JLabel("Catégorie :");
+		lblNewLabel_1.setBounds(73, 469, 64, 14);
+		contentPane.add(lblNewLabel_1);
 		
 		JButton btn_valider = new JButton("Valider");
 		btn_valider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Récupèrer les informations saisies
 				String nom = text_nom.getText();
 				String prenom = text_prenom.getText();
 				String dateNaiss = text_date_naiss.getText();
@@ -256,7 +272,51 @@ public class Client extends JFrame {
 				String courriel = text_courriel.getText();
 				String nomPrenomResponsable = text_nom_prenom_responsable.getText();
 				
-
+				
+				String pratique = "";
+				if(loisir.isSelected()) {
+					pratique = "loisir";
+				}else if(competition.isSelected()){
+					pratique = "compétition";
+				}
+				
+				String lateralite = "";
+				if(droitier.isSelected()) {
+					lateralite = "droitier";
+				}else if(gaucher.isSelected()) {
+					lateralite = "gaucher";
+				}
+				
+				String genre = "";
+				if(chckbx_masculin.isSelected()) {
+					genre = "masculin";
+				}else if(chckbx_feminin.isSelected()){
+					genre = "feminin";
+				}
+				
+				// ajoute les valeurs dans une arrayList
+				valeurs.add(nom);
+		        valeurs.add(prenom);
+		        valeurs.add(dateNaiss);
+		        valeurs.add(paysVilleNaiss);
+		        valeurs.add(nationalite);
+		        valeurs.add(adresse);
+		        valeurs.add(codePostal);
+		        valeurs.add(ville);
+		        valeurs.add(tel1);
+		        valeurs.add(tel2);
+		        valeurs.add(courriel);
+		        valeurs.add(nomPrenomResponsable);
+		        valeurs.add(pratique);
+		        valeurs.add(lateralite);
+		        valeurs.add(genre);
+		        
+		     // Parcourir la liste et afficher chaque élément
+				for (String valeur : valeurs) {
+				    System.out.println(valeur);
+				}
+				
+				
 				
 				
 			}
@@ -264,9 +324,15 @@ public class Client extends JFrame {
 		btn_valider.setBounds(300, 536, 89, 23);
 		contentPane.add(btn_valider);
 		
-		JLabel lblNewLabel_1 = new JLabel("Catégorie :");
-		lblNewLabel_1.setBounds(73, 469, 64, 14);
-		contentPane.add(lblNewLabel_1);
+		 JButton btnVoirAdherents = new JButton("Voir Adhérents");
+	        btnVoirAdherents.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                afficherAdherents();
+	            }
+	        });
+	        btnVoirAdherents.setBounds(500, 536, 140, 23);
+	        contentPane.add(btnVoirAdherents);
+		
+		
 	}
 }
-
