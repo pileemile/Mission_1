@@ -14,21 +14,21 @@ public class ClubViewer extends JFrame {
     private DefaultTableModel tableModel;
 
     public ClubViewer() {
-        // Set the frame properties
+       
         setTitle("Clubs de la région");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 400);
 
-        // Initialize the table
+       
         tableModel = new DefaultTableModel(new Object[]{"ID", "Nom", "Adresse", "Contact", "Téléphone", "Mail", "Site"}, 0);
         clubTable = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(clubTable);
         getContentPane().add(scrollPane, BorderLayout.CENTER);
 
-        // Read the XML file and populate the table
+      
         readXML();
 
-        // Display the frame
+    
         setVisible(true);
     }
 
